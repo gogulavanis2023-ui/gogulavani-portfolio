@@ -1,0 +1,98 @@
+{
+ "frames": 5734,
+ "id_decode_acc": 100.0,
+ "closed_set_acc": 97.73,
+ "open_set_detect": 99.5,
+ "genuine_false_reject": 0.77,
+ "false_alarms_normal": 0,
+ "detection": {
+  "A: masquerade (ATK as N1, 0x100)": {
+   "cusum_s": 0.12,
+   "batch_s": 0.18
+  },
+  "B: interleaved spoof (N3 injects 0x100, 30%)": {
+   "cusum_s": 7.27,
+   "batch_s": null
+  },
+  "C: foreign device (FOR as N3, 0x300)": {
+   "cusum_s": 0.7,
+   "batch_s": 0.9
+  }
+ },
+ "alarms": [
+  {
+   "t": 25.119999999999997,
+   "id": 256,
+   "kind": "UNKNOWN DEVICE"
+  },
+  {
+   "t": 52.27007056807614,
+   "id": 256,
+   "kind": "SENDER MISMATCH (physically N3)"
+  },
+  {
+   "t": 55.70000000000001,
+   "id": 768,
+   "kind": "UNKNOWN DEVICE"
+  }
+ ],
+ "model_bytes": 1396,
+ "dominant_samples_per_frame": 462,
+ "ops_per_frame": 13362,
+ "frames_per_s": 85.0,
+ "est_cpu_load_pct": 6.3,
+ "confusion": [
+  [
+   1969,
+   8,
+   23
+  ],
+  [
+   0,
+   1250,
+   0
+  ],
+  [
+   52,
+   0,
+   348
+  ]
+ ],
+ "devices": {
+  "N1": {
+   "vh": 3.55,
+   "vl": 1.4575,
+   "gnd": -0.0011,
+   "fn": 298016.5752,
+   "zeta": 0.61
+  },
+  "N2": {
+   "vh": 3.5252,
+   "vl": 1.4515,
+   "gnd": 0.0054,
+   "fn": 343765.5543,
+   "zeta": 0.6436
+  },
+  "N3": {
+   "vh": 3.5622,
+   "vl": 1.4589,
+   "gnd": 0.0004,
+   "fn": 315606.1045,
+   "zeta": 0.6509
+  },
+  "ATK": {
+   "vh": 3.5674,
+   "vl": 1.4164,
+   "gnd": -0.0018,
+   "fn": 329774.3384,
+   "zeta": 0.7478
+  },
+  "FOR": {
+   "vh": 3.504,
+   "vl": 1.4441,
+   "gnd": -0.0051,
+   "fn": 283515.3606,
+   "zeta": 0.5571
+  }
+ }
+}

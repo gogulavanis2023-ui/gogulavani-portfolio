@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Gogulavani S | Resume</title>
+<style>
+  @page { size: A4; margin: 10mm 13mm; }
+  * { box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Calibri, Arial, sans-serif; color: #1b1f24; font-size: 9.1pt; line-height: 1.3; margin: 0; }
+  h1 { font-size: 21pt; letter-spacing: .5px; margin: 0; color: #0d2a3a; text-align: center; }
+  .sub { text-align: center; font-weight: 600; margin: 2px 0 3px; color: #0d2a3a; }
+  .contact { text-align: center; color: #333; font-size: 9pt; }
+  .contact a { color: #0b5d75; text-decoration: none; }
+  h2 { font-size: 9.8pt; text-transform: uppercase; letter-spacing: .8px; color: #0d2a3a; border-bottom: 1.2px solid #0d2a3a; margin: 8px 0 4px; padding-bottom: 1px; }
+  .row { display: flex; justify-content: space-between; gap: 10px; }
+  .row b { color: #111; }
+  .when { font-style: italic; white-space: nowrap; color: #333; }
+  ul { margin: 2px 0 6px; padding-left: 15px; }
+  li { margin: 1.5px 0; }
+  p { margin: 2px 0; }
+  .muted { color: #555; }
+  .k { font-weight: 600; }
+</style>
+</head>
+<body>
+  <h1>GOGULAVANI S</h1>
+  <div class="sub">FPGA / RTL / Embedded Systems Engineer (Graduate 2027)</div>
+  <div class="contact">
+    gogulavani.s2023@vitstudent.ac.in &nbsp;|&nbsp;
+    <a href="https://github.com/gogulavanis2023-ui">github.com/gogulavanis2023-ui</a> &nbsp;|&nbsp;
+    <a href="https://gogulavanis2023-ui.github.io/gogulavani-portfolio/">Portfolio</a> &nbsp;|&nbsp; Chennai / Bengaluru
+  </div>
+
+  <h2>Summary</h2>
+  <p>ECE undergraduate (VIT Vellore, 2027) who has taken FPGA designs from Verilog RTL through Vivado synthesis, implementation and timing closure to bring-up on Artix-7 hardware. Built a 32-way runtime-configurable GPS correlator engine at IIT Madras and a runtime-reconfigurable FIR filter verified bit-exactly against a golden model. Seeking FPGA, RTL, verification or embedded roles in Chennai or Bengaluru.</p>
+
+  <h2>Education</h2>
+  <div class="row"><span><b>B.Tech, Electronics and Communication Engineering</b></span><span class="when">2023 – 2027 (expected)</span></div>
+  <p>Vellore Institute of Technology (VIT), Vellore &nbsp;|&nbsp; <b>CGPA: 8.05 / 10</b></p>
+
+  <h2>Technical Skills</h2>
+  <p><span class="k">FPGA flow (project-proven):</span> Verilog RTL, Vivado synthesis/implementation, timing analysis &amp; closure, utilisation and SAIF-based power analysis, Quartus Prime with SDC, on-board bring-up and debug</p>
+  <p><span class="k">Digital design:</span> parameterised/generate-based RTL, LFSR/PRN generators, parallel correlator and FIR datapaths, fixed-point arithmetic, clock-domain crossing (Gray code, 2-FF synchronisers)</p>
+  <p><span class="k">Verification:</span> self-checking testbenches, Python golden models, scoreboard testbenches</p>
+  <p><span class="k">Embedded:</span> Embedded C (PIC), STM32, ESP32, Arduino; CAN (MCP2515/TJA1050), SPI, UART</p>
+  <p><span class="k">Boards:</span> Xilinx Artix-7 (Basys 3), Intel Cyclone IV (DE2-115) &nbsp;|&nbsp; <span class="k">Familiarity:</span> SystemVerilog, VHDL, ModelSim, MATLAB, Python</p>
+
+  <h2>Experience</h2>
+  <div class="row"><span><b>Research Intern: FPGA-Based GPS Signal Acquisition</b> &nbsp;|&nbsp; IIT Madras (on-site)</span><span class="when">May 2026 – Jul 2026</span></div>
+  <ul>
+    <li>Problem: GPS acquisition must search all 1,023 C/A code phases; a serial correlator is slow, a fully parallel one costs area and power.</li>
+    <li>Designed a runtime-configurable parallel acquisition engine in Verilog on a Xilinx Artix-7 (Basys 3): G1/G2 LFSR PRN generator, variable delay lines, up to 32 parallel correlator slices and lock detection.</li>
+    <li>Added a 5-bit active-correlator register (N = 1–32, set from board switches) so the search-time vs. resource trade-off runs on one bitstream; characterised at N = 1, 4, 16 and 32.</li>
+    <li>Full 32-slice build closed timing at 100 MHz with WNS +5.85 ns, using 18.0% of device LUTs and 0.138 W on-chip power.</li>
+    <li>Brought the design up on hardware and fixed bugs found on the board (index off-by-one, runtime divider settling, switch/button bounce).</li>
+  </ul>
+  <div class="row"><span><b>Embedded Systems Intern</b> &nbsp;|&nbsp; C Systems Pvt Ltd, Chennai (on-site)</span><span class="when">May 2025 – Jul 2025</span></div>
+  <ul>
+    <li>Built a real-time temperature monitoring system on a PIC microcontroller with DHT sensors in Embedded C; debugged sensor timing and firmware on hardware.</li>
+  </ul>
+
+  <h2>Projects</h2>
+  <div class="row"><span><b>Runtime-Reconfigurable Parallel FIR Filter</b> (team of 2) &nbsp;|&nbsp; <i>Verilog, Vivado, Basys 3, Python</i></span><span class="when">Aug – Nov 2026</span></div>
+  <ul>
+    <li>48-tap Q1.15 Kaiser low-pass filter whose number of active MAC units is selected at runtime; mode changes never corrupt an output.</li>
+    <li>Verified 1000/1000 outputs bit-exact against a Python golden model, including mid-stream mode switches; timing met at 100 MHz (WNS +2.64 ns) with 12 DSP48 slices.</li>
+    <li>Per-mode SAIF power analysis showed dynamic power is nearly flat across modes, so energy per output falls about 7× at full parallelism.</li>
+  </ul>
+  <div class="row"><span><b>CAN-Bus ECU Voltage Fingerprinting IDS</b> (in progress) &nbsp;|&nbsp; <i>CAN, MCP2515, STM32, Python, scikit-learn</i></span><span class="when">2026</span></div>
+  <ul>
+    <li>3-node 125 kbit/s CAN bench (Arduino + MCP2515/TJA1050) and an STM32F103 guardian node; bit-level digital twin of the bench.</li>
+    <li>Simulated guardian (15 features, linear SVM, Mahalanobis open-set check, per-ID CUSUM): 97.7% sender accuracy, 99.5% unknown-device detection, 0 false alarms, 1.4 kB model. IEEE-format paper in preparation.</li>
+  </ul>
+  <div class="row"><span><b>Asynchronous FIFO with Gray-Code CDC</b> &nbsp;|&nbsp; <i>Verilog, Quartus, SDC, DE2-115</i></span><span class="when">2026</span></div>
+  <ul>
+    <li>32×8 dual-clock FIFO (50 / 12.5 MHz) with Gray-coded pointers, 2-FF synchronisers and asynchronous clock groups in SDC; self-checking scoreboard testbench verifies overflow/underflow blocking and data order.</li>
+  </ul>
+
+  <h2>Positions of Responsibility</h2>
+  <ul>
+    <li>Campus Partner, Perplexity (Aug 2025 – present): ran campus promotion; 50+ user sign-ups.</li>
+    <li>Student Coordinator, Campus Decoration, GraVITas Tech Fest, VIT (Sep – Oct 2025).</li>
+  </ul>
+</body>
+</html>
