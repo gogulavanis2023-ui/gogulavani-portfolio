@@ -169,7 +169,7 @@ export default function GpsViz() {
       <div className="panel__foot">
         {tab === 'search'
           ? 'Timing follows correlator_slice.v: the slice holding offset 800 steps one delay per 1023-chip period until the agreement count reaches 950. Animation time is compressed.'
-          : 'Bit-exact C/A generator from the GPS ICD (PRN 1 starts 1440 octal). Used here as the reference model the RTL is checked against.'}
+          : 'Bit-exact C/A generator from the GPS ICD (PRN 1 starts 1440 octal). The project's prn_generator.v matches it for PRN 1–8 in a Vivado xsim testbench.'}
       </div>
     </div>
   );

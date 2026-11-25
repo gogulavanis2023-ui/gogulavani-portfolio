@@ -79,6 +79,7 @@ export const featured: Project[] = [
       'Constrain the 100 MHz clock and board I/O in XDC, implement, and read the timing, utilisation and power reports.',
       'Bring up on the board and sweep N; the design was characterised at N = 1, 4, 16 and 32.',
       'Debug on hardware: fixed an index off-by-one in range partitioning, settling of the runtime range divider, and switch/button bounce.',
+      'Verify against the GPS ICD: a bit-accurate reference model showed the original LFSRs shifted opposite to their tap indexing (G1 period 63, not 1023). Acquisition had still locked, because the test signal is a delayed copy of the same sequence. After the one-line fix ({g[8:0], fb}), tb_prn_generator passes for PRN 1–8 (ICD first chips, 512 ones, period 1023) and fails on the old RTL; tb_acquisition_slice confirms lock at offset 800 after 25 periods with no false lock.',
     ],
     results: {
       intro: 'From the post-route Vivado reports of the full 32-slice build (all slices exist in hardware; N only enables them):',
@@ -92,11 +93,12 @@ export const featured: Project[] = [
         ],
       },
       notes: [
-        'Periods to lock follow directly from the RTL: the slice whose range contains offset 800 steps through its range one offset per 1023-chip period. N = 1 needs 800 periods; N = 32 needs 25.',
+        'Periods to lock follow directly from the RTL: the slice whose range contains offset 800 steps through its range one offset per 1023-chip period. N = 1 needs 800 periods; N = 32 needs 25, which the xsim testbench confirms (lock after 25 periods).',
+        'C/A generator: Vivado xsim testbench PASS for PRN 1–8 against the GPS ICD.',
       ],
     },
     limitations: [
-      'A bit-accurate model of the current prn_generator shows its register shifts opposite to its tap indexing, so G1 repeats every 63 chips and the output is not the ICD PRN sequence. Acquisition still locks correctly because the test signal is a delayed copy of the same sequence. Reversing the shift (g ← {g[8:0], fb}) reproduces PRN 1 exactly (first chips 1100100000); the fix is pending re-verification on hardware.',
+      'The corrected C/A generator (see Methodology) is verified in simulation; the bitstream has not yet been rebuilt and re-run on the board.',
       'The incoming signal is a delayed copy of the replica: no noise, carrier or Doppler.',
       'Only the code-phase dimension is searched; there is no Doppler-bin search.',
       'The chip clock is deliberately slowed to 500 Hz for visual demonstration.',

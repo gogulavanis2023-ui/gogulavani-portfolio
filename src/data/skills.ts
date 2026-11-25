@@ -25,6 +25,7 @@ export const skills: SkillGroup[] = [
       { name: 'Golden-model verification', evidence: 'FIR: 1000/1000 outputs bit-exact vs. Python' },
       { name: 'Scoreboard testbench', evidence: 'Async FIFO: overflow/underflow and ordering checks' },
       { name: 'Mid-stream mode-switch tests', evidence: 'FIR SWEEP test across all four parallelism modes' },
+      { name: 'Checking RTL against a standard', evidence: 'GPS C/A generator vs. ICD tables in Vivado xsim; found and fixed an LFSR bug' },
     ],
   },
   {
